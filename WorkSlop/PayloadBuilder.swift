@@ -34,6 +34,11 @@ enum PayloadBuilder {
     }
 
     static func build(staged: Set<String>, iconEntries: [CustomIconEntry]) -> BuiltPayload {
+        // Sweep: "remove-all" is the standalone undo payload (RemovalPlanner).
+        if staged.contains("remove-all") {
+            let removal = RemovalPlanner.build(iconEntries: iconEntries)
+            return BuiltPayload(files: removal.files, warnings: removal.warnings)
+        }
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("PayloadPreview", isDirectory: true)
         try? FileManager.default.removeItem(at: dir)

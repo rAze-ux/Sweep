@@ -9,6 +9,7 @@ enum HomeRoute: Hashable {
     case allTweaks
     case settings
     case apply
+    case sweep
 }
 
 struct MainMenuView: View {
@@ -58,6 +59,7 @@ struct MainMenuView: View {
                 case .allTweaks: AllTweaksView()
                 case .settings: SettingsView()
                 case .apply: ApplyView()
+                case .sweep: RemovalView()
                 }
             }
         }
@@ -268,6 +270,28 @@ struct MainMenuView: View {
             }
             .buttonStyle(.plain)
             .accessibilityIdentifier("menu-all-tweaks")
+            Divider()
+                .padding(.leading, 46)
+            Button {
+                path.append(.sweep)
+            } label: {
+                HStack {
+                    Label {
+                        Text("Sweep — Remove All Tweaks")
+                    } icon: {
+                        RowIcon(name: "wind")
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+                .padding(.vertical, 12)
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("menu-sweep")
             Divider()
                 .padding(.leading, 46)
             Button {

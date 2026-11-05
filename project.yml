@@ -1,6 +1,6 @@
-name: WorkSlop
+name: Sweep
 options:
-  bundleIdPrefix: com.adnan120hz
+  bundleIdPrefix: com.sweep.ios
   deploymentTarget:
     iOS: "16.0"
 packages:
@@ -14,8 +14,8 @@ targets:
     info:
       path: WorkSlop/Info.plist
       properties:
-        CFBundleName: WorkSlop
-        CFBundleDisplayName: WorkSlop
+        CFBundleName: Sweep
+        CFBundleDisplayName: Sweep
         UILaunchScreen: {}
         UTExportedTypeDeclarations:
           - UTTypeIdentifier: com.adnan120hz.workslop.tendies
